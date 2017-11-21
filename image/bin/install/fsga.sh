@@ -11,7 +11,8 @@ PACKAGES="\
 	automake \
 	ca-certificates \
 	cmake \
-	g++ \
+	gcc-5 \
+	g++-5 \
 	libbamtools-dev \
 	libsparsehash-dev \
 	libtbb-dev \
@@ -19,10 +20,13 @@ PACKAGES="\
 	wget \
 	zlib1g-dev"
 
-echo "deb http://http.us.debian.org/debian testing main" > /etc/apt/sources.list
-apt-get update -y && \
-    apt-get install -y --no-install-recommends ${PACKAGES}
+# Add repositories for older versions of gcc/g++
+echo "deb http://http.us.debian.org/debian unstable main" > /etc/apt/sources.list
+apt-get update --yes
+apt-get install --yes --no-install-recommends ${PACKAGES}
 
+# Specify use of older versions of gcc/g++
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
 
 mkdir ${FSGA_DIR}
 cd ${FSGA_DIR} && \
