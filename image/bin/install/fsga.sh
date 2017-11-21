@@ -29,7 +29,7 @@ cd ${FSGA_DIR} && \
     wget --quiet ${FSGA_TAR} --no-check-certificate --output-document - \
     | tar xzf - --directory . --strip-components=2 && \
     ./autogen.sh && \
-    ./configure --with-bamtools=/usr/include/bamtools/ && \
+    ./configure --with-bamtools=/usr && \
     make && \
     make install && \
     rm -rf ${FSGA_DIR}
