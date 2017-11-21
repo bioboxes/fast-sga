@@ -14,6 +14,7 @@ PACKAGES="\
 	gcc-5 \
 	g++-5 \
 	libbamtools-dev \
+	libboost-dev \
 	libsparsehash-dev \
 	libtbb-dev \
 	make \
@@ -34,8 +35,5 @@ cd ${FSGA_DIR} && \
     | tar xzf - --directory . --strip-components=2 && \
     ./autogen.sh && \
     ./configure --with-bamtools=/usr && \
-    make && \
-    make install && \
-    rm -rf ${FSGA_DIR}
-
-
+    make -j $(nproc) && \
+    make install
