@@ -24,3 +24,9 @@ RUN install.sh && \
 ENV TASKFILE     /usr/local/share/Taskfile
 ENV SCHEMA       /usr/local/share/assembler_schema.yaml
 ENV BIOBOX_EXEC  assemble.sh
+
+ENV INPUT     /bbx/input/biobox.yaml
+ENV OUTPUT    /bbx/output
+ENV METADATA  /bbx/metadata
+
+ENTRYPOINT ["validate_inputs.sh"]

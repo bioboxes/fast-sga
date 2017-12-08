@@ -2,6 +2,7 @@
 
 set -o errexit
 set -o nounset
+set -o xtrace
 
 TASK=$1
 READS=$(biobox_args.sh 'select(has("fastq")) | .fastq | map(.value) | join(",")')
